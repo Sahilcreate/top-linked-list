@@ -1,10 +1,13 @@
 import Node from "./node.js";
 
+// Class which represent the full list
 export default class LinkedList {
   constructor(head = null) {
     this.listHead = null;
   }
 
+  // Adds a new node containing 'value' to the 
+  // end of the list
   append(value) {
     if (this.listHead === null) {
       this.listHead = new Node(value, null);
@@ -17,11 +20,14 @@ export default class LinkedList {
     }
   }
 
+  // Adds a new node containing 'value' to the 
+  // start of the list
   prepend(value) {
     let tmp = this.listHead;
     this.listHead = new Node(value, tmp)
   }
 
+  // returns the total number of nodes in the list
   size() {
     let tmp = this.listHead;
     let totalNode = 0;
@@ -35,10 +41,12 @@ export default class LinkedList {
     return totalNode;
   }
 
+  // returns the first node in the list
   head() {
     return this.listHead;
   }
 
+  // returns the last node in the list
   tail() {
     let tmp = this.listHead;
     if (tmp) {
@@ -49,6 +57,7 @@ export default class LinkedList {
     return tmp;
   }
 
+  //returns the node at the given 'index'
   at(index) {
     let tmp = this.listHead;
     let indexCount = 0;
@@ -60,6 +69,7 @@ export default class LinkedList {
     return tmp;
   }
 
+  // removes the last element from the list
   pop() {
     let tmp = this.listHead;
     if (tmp) {
@@ -72,6 +82,8 @@ export default class LinkedList {
     }
   }
 
+  // returns true if the passed in value is in the list
+  // and otherwise returns false
   contains(value) {
     let tmp = this.listHead;
     while (tmp) {
@@ -84,6 +96,8 @@ export default class LinkedList {
     return false;
   }
 
+  // returns the index of the node containing value, or
+  // null if not found
   find(value) {
     let tmp = this.listHead;
     let index = 0
@@ -97,6 +111,9 @@ export default class LinkedList {
     return null;
   }
 
+  // represents your LinkedList objects as strings, so you can 
+  // print them out and preview them in the console. The format
+  // should be '(value)->(value)->(value)->null'
   toString() {
     let tmp = this.listHead;
     let string = '';
@@ -107,11 +124,11 @@ export default class LinkedList {
     return string.concat('null');
   }
 
+  // It inserts a new node with the provided 'value' 
+  // at the given 'index'
   insertAt(value, index) {
-    //if index exceed
-    //the max index of our linked list
-    //then the given node is added at 
-    //end of the list
+    //if index exceed the max index of our linked list
+    //then the given node is added at end of the list
     if (index <= 0) {
       this.prepend(value);
     } else {
@@ -129,6 +146,7 @@ export default class LinkedList {
     }
   }
 
+  // It removes the node at the given 'index'
   removeAt(index) {
     if (index < 0) {
       return;
